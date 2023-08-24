@@ -1,0 +1,112 @@
+<html>
+	<head>
+		<title>Job Post Verification </title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='box.css') }}">
+		<link rel="stylesheet" href="{{ url_for('static', filename='box22.css') }}">
+
+	</head>
+	<body>
+		<div class="banner">
+			<div class="navbar">
+				<img src="{{ url_for('static', filename='logo.png') }}" class="logo">
+				<ul>
+					<li><a href="/"> Home</a></li>
+				</ul>
+			</div>
+			
+			<div class="content">
+
+<!-- ========================================================================================================================== -->
+			
+			{% if prediction == -1 :%}
+					<h1> Process Verification</h1>
+					<br>
+					
+					<form action="{{ url_for('Load1') }}" method="POST">
+						<center>
+							<label for = "website">Choose the website: </label>
+							<select name = "website" id = "website">
+								<option value = "LinkedIn">LinkedIn</option>
+								<option value = "Careers24">Careers24</option>
+							</select>
+							<br>
+							<label for ="pastLink">Enter link:</label>
+							<input type="text" name="URL_Link" class="drop-edit" id="pastLink" size="100" name="pasteLink" required="required">
+						</center>
+						<button type="submit"><span></span>Verify</button>
+					</form>
+<!-- ========================================================================================================================== -->
+
+	{% elif prediction == 1 :%}
+				<h1>{% print(job_title) %}</h1>
+		<center>
+		<img src="{{ url_for('static', filename='red.png') }}"><p4><b>INVALID!</b></p4>
+		<br>
+		<br>
+		<p3>THE JOB YOU ARE TRYING TO APPLY FOR IS NOT REAL. THIS IS A POSSIBLE SCAM<br> </p3>
+		<br>
+		<br>
+		
+		 
+		<div>
+				
+			<a href="box"><button type="button"><span></span>BACK</button></a>
+		</div>
+           
+		</center>
+	
+
+<!-- ========================================================================================================================== -->
+
+			{% elif prediction == 0: %}
+
+					<center>
+						<br>
+						<h1>{% print(job_title) %}</h1>
+						
+					</center>
+					
+					<h3 style="color: white;">ABOUT THE JOB</h3>
+					<div class="scroll-bg">
+						<div class="scroll-div">
+						<div class="scroll-object">
+							
+							<h3>DESCRIPTION</h3>
+							<p><b>Location:</b>{% print(job_location) %}</p>
+							{% print(job_desc) %}
+							</div>
+						</div>
+					</div>
+					<center>
+					<img src="{{ url_for('static', filename='green.png') }}">
+					<h5><b>VERIFIED!</b></h5>
+		<br>
+		<br>
+		<p3>The job you are applying for is legitimate.<br>If you wish to continue click below and apply.</p3>
+		<br>
+		<br>
+           
+		
+	
+					
+							<a href='box'> <button type="button"><span></span>BACK</button></a>
+							<a href={% print(link) %}><button type="button"><span></span>APPLY</button></a>
+			
+						
+		</center>
+	
+<!-- ========================================================================================================================== -->
+						
+					{% elif prediction == 2: %}
+						<h3>An error has occured</h3>
+
+
+<!-- ========================================================================================================================== -->
+
+					{% endif %}	
+				</div>
+		</div>
+	
+	</body>
+	</html>

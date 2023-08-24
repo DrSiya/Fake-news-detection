@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>loading</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='loading_style2.css') }}"> 
+  </head>
+
+  <body>
+    <div class="banner">
+      <div class="navbar">
+        <img src="{{ url_for('static', filename='logo.png') }}" class="logo"> 
+        <ul>
+          <li><a> Home</a></li>
+        </ul>
+      </div>
+
+      <div class="content">
+				<h1> Verifying please wait</h1><br>
+      </div>
+      <br>
+      
+      <div class="center">
+        <div class="ring"></div>
+      
+        <span> loading...</span>
+   
+      </div>
+
+<!-- ============================================================================================= -->
+
+    {% if box == 0 :%}
+  
+    <form action="{{ url_for('Link_predict')}}" method="POST" id = "invincibleForm">
+        <input type="hidden" name="URL_Link" value = '{{ link }}'>
+        <input type="hidden" name="urlType" value = '{{ type }}'> 
+    </form>
+
+    <script type="text/javascript">
+
+      function formAutoSubmit () {
+      var frm = document.getElementById("invincibleForm");
+      frm.submit();
+      }
+      window.onload = formAutoSubmit;
+    </script> 
+
+<!-- ============================================================================================= -->
+    {% elif box == 1 :%}
+    <form action="{{ url_for('predict')}}" method="POST" id = "invincibleForm2">
+
+              <input type = "hidden"  id="title" name="pasteLink" value = '{{ job_title }}'>
+              <input type ="hidden" id = "Location" name="Location" value = '{{ job_location }}'>
+              <input type ="hidden" name="message" value = '{{ job_desc }}'>
+    
+      </form> 
+      <script type="text/javascript">
+
+        function formAutoSubmit () {
+        var frm = document.getElementById("invincibleForm2");
+        frm.submit();
+        }
+        window.onload = formAutoSubmit;
+      </script> 
+<!-- ============================================================================================= -->
+
+  {% endif %} 
+  </body>
+
+</html>

@@ -1,0 +1,48 @@
+h1 {
+    text-align: center;
+    color: white;
+}
+
+h3 {
+    text-align: justify;
+    color: black;
+}
+
+p {
+    text-align: left;
+    color: black;
+}
+p4 {
+    text-align: center;
+    color: red;
+}
+p3{
+	text-align: center;
+	color: white;
+}
+img {
+    height: auto;
+    width: 10%;
+    display: block;
+}
+.scroll-bg{
+	background: white;
+	width: 400px;
+	position: absolute; 
+	margin:auto;
+	padding: 30px;
+	border-radius: 50px;
+}
+.scroll-div{
+	width: 400px;
+	background: white;
+	height: 300px;
+	overflow: hidden;
+	overflow-y: scroll;
+}
+.scroll-object{
+	color: black;
+	font-family: sans-serif;
+	font-size: 15px;
+	padding: 20px;
+}
